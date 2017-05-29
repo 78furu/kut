@@ -1,0 +1,46 @@
+\documentclass[]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+
+\title{Hold pályája}
+\author{Furuglyás Kristóf}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Föld-Hold rendszer}
+
+Ptolemaiosz idejében idejében még elfogadott volt, hogy a Föld volt a világmindenség közepe. Manapság már tudjuk, hogy tévedett, de vannak követői így is\footnote{https://theflatearthsociety.org}. \\
+Mindennek ellenére, ha felnézünk az éjjeli égboltra, és elgondolkodunk azon, hogy a Hold hogy kering, akkor elég csak a Föld gravitációs terét figyelembe venni.  
+
+\section{Feladat}
+
+A programozási feladatunk az volt, hogy a Föld-Hold rendszert kellett ábrázolni egy geocentrikus, síkbeli koordinátarendszerben. A programban explicit Euler módszerrel integráljuk ki az alábbi differenciálegyenletet:\\
+$$
+\underline{\ddot{r}}=\frac{M \gamma }{|\underline{r}|^3} \underline{r}
+$$
+
+ahol $\underline{r}$ a helyvektor, $\gamma$ a gravitációs állandó, $M$ pedig a Föld tömege.\\
+A programkódot mellékeltem.
+
+\paragraph{Kezdeti feltételek} Mivel a diffegyenletünk másodrendű, illetve két koordinátával dolgozunk, 4 kezdeti feltételt kellett megadni. A megoldásban a Hold perigeumból indul, megadott sebességgel.
+
+\section{Megoldás}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ered.png}
+\caption{A Föld-Hold rendszer explicit Euler módszerrel megoldva. Látható, hogy a megoldás nem jó, hiszen a Hold jelentős mértékben távolodik, mindössze néhány periódus megtétele után}
+\label{fig:plot}
+\end{figure}
+A megoldást a \ref{fig:plot}. ábra mutatja. Jobb megoldás érdekében negyedrendű Runge-Kutta módszert érdemes használni.
+
+
+
+
+\end{document}
